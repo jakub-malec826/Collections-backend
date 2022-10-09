@@ -5,5 +5,6 @@ export default interface UserSchemaIF extends Document {
     password: string;
     email: string;
     isAdmin: boolean;
+    status: string;
     collections: [];
 }

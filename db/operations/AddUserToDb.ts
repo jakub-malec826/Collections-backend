@@ -16,6 +16,7 @@ export default async function AddUserToDb(userData: userDataIF) {
             email,
             password,
             isAdmin: true,
+            status: "active",
         });
         await user.save();
         console.log(user);

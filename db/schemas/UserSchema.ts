@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
     password: String,
     email: String,
     isAdmin: Boolean,
+    status: String,
     collections: [CollectionSchema],
 });
 

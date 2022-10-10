@@ -10,17 +10,17 @@ interface userDataIF {
 export default async function AddUserToDb(userData: userDataIF) {
     const { userName, email, password } = userData;
     const cErr = await IfUserExist(userName, email);
+    const user = new UserModel({
+        userName,
+        email,
+        password,
+        isAdmin: true,
+        status: "active",
+    });
     if (cErr === "OK") {
-        const user = new UserModel({
-            userName,
-            email,
-            password,
-            isAdmin: true,
-            status: "active",
-        });
         await user.save();
         console.log(user);
+        return { message: cErr, body: user };
     }
-    console.log(cErr);
-    return cErr;
+    return { message: cErr, body: null };
 }

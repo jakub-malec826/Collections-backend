@@ -7,7 +7,8 @@ export default async function MatchPassword(
 ) {
     const ifExist: UserSchemaIF | null = await UserModel.findOne({ userName });
     if (ifExist) {
-        if (ifExist.password === password) return "OK";
-        else return "Password are not matched";
-    } else return "User doesn't exit";
+        if (ifExist.password === password)
+            return { message: "OK", body: ifExist };
+        else return { message: "Password are not matched", body: null };
+    } else return { message: "User doesn't exit", body: null };
 }

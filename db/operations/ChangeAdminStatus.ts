@@ -7,7 +7,6 @@ export default async function ChangeAdminStatus(_id: string) {
     const isAdm = await UserModel.findByIdAndUpdate(_id, {
         isAdmin: !user?.isAdmin,
     });
-    console.log(isAdm);
     if (!isAdm) return "Error";
     else return "OK";
 }

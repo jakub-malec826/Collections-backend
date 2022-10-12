@@ -7,7 +7,6 @@ export default async function ChangeUserStatus(_id: string) {
     const status = await UserModel.findByIdAndUpdate(_id, {
         status: user?.status === "active" ? "blocked" : "active",
     });
-    console.log(status);
     if (!status) return "Error";
     else return "OK";
 }

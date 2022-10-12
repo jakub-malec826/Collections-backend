@@ -1,4 +1,5 @@
 import { Document } from "mongoose";
+import CollectionSchemaIF from "./CollectionSchemaIF";
 
 export default interface UserSchemaIF extends Document {
     userName: string;
@@ -6,5 +7,5 @@ export default interface UserSchemaIF extends Document {
     email: string;
     isAdmin: boolean;
     status: string;
-    collections: [];
+    collections: CollectionSchemaIF[];
 }

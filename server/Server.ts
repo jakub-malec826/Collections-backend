@@ -18,6 +18,9 @@ server.use("/auth", authRouter);
 server.use("/user", userRouter);
 server.use("/admin", adminRouter);
 
-const port = process.env.PORT || 9090;
+// const port = process.env.PORT;
+const port = 9090;
 
-server.listen(port, () => console.log("App work on port:", port));
+server.listen(port, "192.168.0.145", () =>
+    console.log("App starts on port", port)
+);

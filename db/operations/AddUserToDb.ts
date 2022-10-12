@@ -19,7 +19,6 @@ export default async function AddUserToDb(userData: userDataIF) {
     });
     if (cErr === "OK") {
         await user.save();
-        console.log(user);
         return { message: cErr, body: user };
     }
     return { message: cErr, body: null };

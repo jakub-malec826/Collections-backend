@@ -4,7 +4,7 @@
     "description": "",
     "main": "Server.ts",
     "scripts": {
-        "start": "nodemon server/Server.ts",
+        "start": "NODE_ENV=development nodemon server/Server.ts",
         "web": "server/Server.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

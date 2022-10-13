@@ -13,7 +13,5 @@ export default async function AddToCollection(
         },
         { new: true }
     );
-    console.log(userName, collections);
-    console.log(upd?.collections[0].description);
     return upd;
 }

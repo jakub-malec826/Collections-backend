@@ -1,10 +1,10 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
 import cors from "cors";
 
 import authRouter from "./routings/Auth";
 
 import ConnectToDb from "../db/ConnectToDb";
-import userRouter from "./routings/User";
+import usersRouter from "./routings/Users";
 import adminRouter from "./routings/Admin";
 
 ConnectToDb();
@@ -15,11 +15,11 @@ server.use(cors());
 server.use(express.json());
 
 server.use("/auth", authRouter);
-server.use("/user", userRouter);
+server.use("/users", usersRouter);
 server.use("/admin", adminRouter);
 
 process.env.NODE_ENV === "development"
-    ? server.listen(9090, "192.168.0.145", () =>
+    ? server.listen(9090, "192.168.67.15", () =>
           console.log("App starts on port", 9090)
       )
     : server.listen(process.env.PORT, () =>

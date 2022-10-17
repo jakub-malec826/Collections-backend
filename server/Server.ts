@@ -19,7 +19,7 @@ server.use("/users", usersRouter);
 server.use("/admin", adminRouter);
 
 process.env.NODE_ENV === "development"
-    ? server.listen(9090, "192.168.67.15", () =>
+    ? server.listen(9090, "192.168.0.145", () =>
           console.log("App starts on port", 9090)
       )
     : server.listen(process.env.PORT, () =>

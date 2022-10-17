@@ -4,7 +4,7 @@ export default async function AddToCollection(
     userName: string,
     collections: CollectionSchemaIF
 ) {
-    const upd = await UserModel.findOneAndUpdate(
+    const c = await UserModel.findOneAndUpdate(
         { userName },
         {
             $push: {
@@ -13,5 +13,5 @@ export default async function AddToCollection(
         },
         { new: true }
     );
-    return upd;
+    console.log(c);
 }

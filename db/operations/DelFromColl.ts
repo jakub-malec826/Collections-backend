@@ -1,13 +1,17 @@
 import UserModel from "../models/UserModel";
-export default async function DelFromColl(userName: string, collID: string) {
+import CollectionSchemaIF from "../interfaces/CollectionSchemaIF";
+export default async function DelFromColl(
+    userName: string,
+    collection: CollectionSchemaIF
+) {
     const coll = await UserModel.findOneAndUpdate(
         { userName },
         {
             $pull: {
-                collections: { _id: collID },
+                collections: { _id: collection._id },
             },
         },
-        { multi: true, new: true }
+        { new: true }
     );
     console.log(coll);
 }

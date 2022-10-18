@@ -1,5 +1,5 @@
-import UserModel from "../models/UserModel";
-import IfUserExist from "../validation/IfUserExist";
+import UserModel from "../../models/UserModel";
+import IfUserExist from "../../validation/IfUserExist";
 
 interface userDataIF {
     userName: string;

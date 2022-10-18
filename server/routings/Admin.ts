@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 
-import ChangeAdminStatus from "../../db/operations/ChangeAdminStatus";
-import ChangeUserStatus from "../../db/operations/ChangeUserStatus";
+import ChangeAdminStatus from "../../db/operations/users/ChangeAdminStatus";
+import ChangeUserStatus from "../../db/operations/users/ChangeUserStatus";
 
 const adminRouter = Router();
 

@@ -1,7 +1,8 @@
 export default interface ItemSchemaIF {
-    id: number;
+    _id?: string;
     name: string;
     tag: string[];
     comments: { user: string; comment: string }[];
     likes: number;
+    additionalField: { fieldName: string; fieldType: string }[];
 }

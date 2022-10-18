@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from "express";
 
-import AddUserToDb from "../../db/operations/AddUserToDb";
+import AddUserToDb from "../../db/operations/users/AddUserToDb";
 import MatchPassword from "../../db/validation/MatchPassword";
 
 const authRouter: Router = express.Router();

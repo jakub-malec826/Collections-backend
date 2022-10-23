@@ -11,8 +11,6 @@ import UserModel from "../../db/models/UserModel";
 
 const collectionRouter = Router();
 
-console.log(process.env.REACT_APP_API_SECRET);
-
 cloudinary.v2.config({
 	cloud_name: process.env.REACT_APP_CLOUD_NAME,
 	api_key: process.env.REACT_APP_API_KEY,

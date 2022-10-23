@@ -8,6 +8,7 @@ import authRouter from "./routings/Auth";
 import ConnectToDb from "../db/ConnectToDb";
 import usersRouter from "./routings/Users";
 import adminRouter from "./routings/Admin";
+import topicRouter from "./routings/Topic";
 
 ConnectToDb();
 
@@ -19,6 +20,7 @@ server.use(express.json());
 server.use("/auth", authRouter);
 server.use("/users", usersRouter);
 server.use("/admin", adminRouter);
+server.use("/topic", topicRouter);
 
 process.env.NODE_ENV === "development"
 	? server.listen(9090, "192.168.0.145", () =>

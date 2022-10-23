@@ -5,7 +5,7 @@ const CollectionSchema = new mongoose.Schema({
     name: String,
     description: String,
     topic: String,
-    image: String,
+    image: { url: String, id: String},
     owner: String,
     items: [ItemSchema],
 });

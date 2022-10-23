@@ -11,7 +11,7 @@ const ItemSchema = new mongoose.Schema(
                 comment: String,
             },
         ],
-        likes: Number,
+        likes: [String],
         additionalField: [
             {
                 fieldName: String,

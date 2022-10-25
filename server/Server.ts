@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import * as dotenv from "dotenv";
 import cors from "cors";
 
 import authRouter from "./routings/Auth";
@@ -10,6 +11,8 @@ import itemsRouter from "./routings/Items";
 import collectionRouter from "./routings/Collections";
 
 ConnectToDb();
+
+dotenv.config();
 
 const server: Express = express();
 

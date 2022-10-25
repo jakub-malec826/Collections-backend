@@ -1,7 +1,6 @@
 import cloudinary from "cloudinary";
 import CollectionModel from "../../models/CollectionModel";
 
-require("dotenv").config();
 
 cloudinary.v2.config({
 	cloud_name: process.env.CLOUD_NAME,

@@ -3,7 +3,10 @@ import CollectionModel from "../../models/CollectionModel";
 
 export default async function EditCollection(
 	collectionId: string,
-	collection: CollectionSchemaIF
+	collection: CollectionSchemaIF,
 ) {
-	return await CollectionModel.findByIdAndUpdate(collectionId, collection, {new: true});
+
+	return await CollectionModel.findByIdAndUpdate(collectionId, collection, {
+		new: true,
+	});
 }

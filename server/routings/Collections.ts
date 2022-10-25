@@ -7,13 +7,19 @@ import AddCollections from "../../db/operations/collections/AddCollections";
 import EditCollection from "../../db/operations/collections/EditCollection";
 
 import DeleteCollection from "../../db/operations/collections/DeleteCollection";
-import DeleteImageFromCloudinary from "../../db/operations/collections/DeleteImageFromCloudinary";
+import DeleteImageFromCloudinary from "../../db/operations/collections/cloudinary/DeleteImageFromCloudinary";
+import AddItemToCollection from "../../db/operations/collections/AddItemToCollection";
+import DeleteItemFromCollection from "../../db/operations/collections/DeleteItemFromCollection";
 
 const collectionRouter = Router();
 
 collectionRouter.get("/getall/:userid", async (req: Request, res: Response) => {
 	res.json(await GetAllCollections(req.params.userid)).end();
 });
+
+// collectionRouter.get("/getbiggest", async (req: Request, res: Response) => {
+// 	res.json().end();
+// });
 
 collectionRouter.post(
 	"/newcollection/",
@@ -28,6 +34,30 @@ collectionRouter.put(
 		await DeleteImageFromCloudinary(req.params.collectionid);
 
 		res.json(await EditCollection(req.params.collectionid, req.body)).end();
+	}
+);
+
+collectionRouter.put(
+	"/additemtocollection/:collectionName/:itemid",
+	async (req: Request, res: Response) => {
+		res.json(
+			await AddItemToCollection(
+				req.params.collectionName,
+				req.params.itemid
+			)
+		).end();
+	}
+);
+
+collectionRouter.put(
+	"/deleteitemfromcollection/:collectionName/:itemid",
+	async (req: Request, res: Response) => {
+		res.json(
+			await DeleteItemFromCollection(
+				req.params.collectionName,
+				req.params.itemid
+			)
+		).end();
 	}
 );
 

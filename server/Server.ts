@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
+dotenv.config();
 
 import authRouter from "./routings/Auth";
 
@@ -10,11 +11,9 @@ import topicRouter from "./routings/Topic";
 import itemsRouter from "./routings/Items";
 import collectionRouter from "./routings/Collections";
 
-ConnectToDb();
-
-dotenv.config();
-
 const server: Express = express();
+
+ConnectToDb();
 
 server.use(cors());
 server.use(express.json());

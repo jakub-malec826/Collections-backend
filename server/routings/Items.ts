@@ -18,9 +18,9 @@ itemsRouter.use("/comments", commentsRouter);
 itemsRouter.use("/likes", likesRouter);
 
 itemsRouter.get(
-	"/getall/:collectionname",
+	"/getall/:collectionid",
 	async (req: Request, res: Response) => {
-		res.json(await GetAllItems(req.params.collectionname)).end();
+		res.json(await GetAllItems(req.params.collectionid)).end();
 	}
 );
 itemsRouter.get("/lastadded", async (req: Request, res: Response) => {

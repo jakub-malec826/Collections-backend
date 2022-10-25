@@ -1,11 +1,16 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import {v2 as cloudinary} from "cloudinary";
 
-const url =
-	"mongodb+srv://jakub-malec826:P6XgOum8RR6siL6a@usersdb.4tqbyhs.mongodb.net/?retryWrites=true&w=majority";
+const url = `mongodb+srv://jakub-malec826:${process.env.REACT_APP_MONGO_DATA}@usersdb.4tqbyhs.mongodb.net/?retryWrites=true&w=majority`;
 
-export default function ConnectToDb() {
+export default async function ConnectToDb() {
 	try {
-		mongoose.connect(url);
+		cloudinary.config({
+			cloud_name: process.env.REACT_APP_CLOUD_NAME,
+			api_key: process.env.REACT_APP_API_KEY,
+			api_secret: process.env.REACT_APP_API_SECRET,
+		});
+		await mongoose.connect(url);
 		console.log("Connection with db OK");
 	} catch (err) {
 		console.error(err);

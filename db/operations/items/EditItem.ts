@@ -1,20 +1,6 @@
-import UserModel from "../../models/UserModel";
-import ItemSchemaIF from "../../interfaces/ItemsSchemaIF";
-export default async function EditCollection(
-    userName: string,
-    collectionName: string,
-    item: ItemSchemaIF,
-    index: number
-) {
-    await UserModel.findOneAndUpdate(
-        {
-            userName,
-            "collections.name": collectionName,
-        },
-        {
-            $set: {
-                [`collections.$.items.${index}`]: item,
-            },
-        }
-    );
+import ItemSchemaIF from "../../interfaces/ItemSchemaIF";
+import ItemModel from "../../models/ItemModel";
+
+export default async function EditItem(itemId: string, item: ItemSchemaIF) {
+	return await ItemModel.findByIdAndUpdate(itemId, item, { new: true });
 }

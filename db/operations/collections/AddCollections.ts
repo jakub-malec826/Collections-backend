@@ -1,16 +1,10 @@
-import UserModel from "../../models/UserModel";
 import CollectionSchemaIF from "../../interfaces/CollectionSchemaIF";
-export default async function AddCollections(
-    userName: string,
-    collections: CollectionSchemaIF
-) {
-    await UserModel.findOneAndUpdate(
-        { userName },
-        {
-            $push: {
-                collections,
-            },
-        },
-        { new: true }
-    );
+import CollectionModel from "../../models/CollectionModel";
+
+export default async function AddCollections(collection: CollectionSchemaIF) {
+	console.log(collection);
+	const newCollection = new CollectionModel(collection);
+	await newCollection.save();
+	console.log(newCollection);
+	return newCollection;
 }

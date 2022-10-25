@@ -1,14 +1,13 @@
 import express, { Express } from "express";
 import cors from "cors";
 
-require("dotenv").config();
-
 import authRouter from "./routings/Auth";
 
 import ConnectToDb from "../db/ConnectToDb";
 import usersRouter from "./routings/Users";
-import adminRouter from "./routings/Admin";
 import topicRouter from "./routings/Topic";
+import itemsRouter from "./routings/Items";
+import collectionRouter from "./routings/Collections";
 
 ConnectToDb();
 
@@ -18,8 +17,11 @@ server.use(cors());
 server.use(express.json());
 
 server.use("/auth", authRouter);
+
 server.use("/users", usersRouter);
-server.use("/admin", adminRouter);
+server.use("/collections", collectionRouter);
+server.use("/items", itemsRouter);
+
 server.use("/topic", topicRouter);
 
 process.env.NODE_ENV === "development"

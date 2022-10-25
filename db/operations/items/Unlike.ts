@@ -1,18 +1,11 @@
-import UserModel from "../../models/UserModel";
-export default async function UnLike(
-	owner: string,
-	loginUser: string,
-	collecitonName: string,
-	itemIndex: number
-) {
-	await UserModel.findOneAndUpdate(
-		{
-			userName: owner,
-			"collections.name": collecitonName,
-		},
+import ItemModel from "../../models/ItemModel";
+
+export default async function UnLike(itemId: string, loginUser: string) {
+	return await ItemModel.findByIdAndUpdate(
+		itemId,
 		{
 			$pull: {
-				[`collections.$.items.${itemIndex}.likes`]: loginUser,
+				likes: loginUser,
 			},
 		},
 		{ new: true }

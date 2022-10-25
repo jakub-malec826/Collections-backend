@@ -1,4 +1,4 @@
 import TopicModel from "../../models/TopicModel";
-export default async function DeleteTopic(topic: string) {
-	await TopicModel.findOneAndDelete({ topic }, { new: true });
+export default async function DeleteTopic(topicId: string) {
+	await TopicModel.findByIdAndDelete(topicId, { new: true });
 }

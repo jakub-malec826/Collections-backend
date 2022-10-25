@@ -1,19 +1,9 @@
 import CollectionSchemaIF from "../../interfaces/CollectionSchemaIF";
-import UserModel from "../../models/UserModel";
+import CollectionModel from "../../models/CollectionModel";
+
 export default async function EditCollection(
-    userName: string,
-    collection: CollectionSchemaIF
+	collectionId: string,
+	collection: CollectionSchemaIF
 ) {
-    await UserModel.findOneAndUpdate(
-        {
-            userName,
-            "collections._id": collection._id,
-        },
-        {
-            $set: {
-                "collections.$": collection,
-            },
-        },
-        { new: true }
-    );
+	return await CollectionModel.findByIdAndUpdate(collectionId, collection, {new: true});
 }

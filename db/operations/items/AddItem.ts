@@ -1,20 +1,8 @@
-import ItemSchemaIF from "../../interfaces/ItemsSchemaIF";
-import UserModel from "../../models/UserModel";
-export default async function AddItem(
-    userName: string,
-    collectionName: string,
-    item: ItemSchemaIF
-) {
-    await UserModel.findOneAndUpdate(
-        {
-            userName,
-            "collections.name": collectionName,
-        },
-        {
-            $push: {
-                "collections.$.items": item,
-            },
-        },
-        { new: true }
-    );
+import ItemSchemaIF from "../../interfaces/ItemSchemaIF";
+import ItemModel from "../../models/ItemModel";
+
+export default async function AddItem(item: ItemSchemaIF) {
+	const newItem = new ItemModel(item);
+	await newItem.save();
+	return newItem;
 }

@@ -1,8 +1,10 @@
 import { Router, Request, Response } from "express";
 
-import AddTopic from "../../db/operations/topics/AddTopic";
-import DeleteTopic from "../../db/operations/topics/DeleteTopic";
 import GetAllTopics from "../../db/operations/topics/GetAllTopics";
+
+import AddTopic from "../../db/operations/topics/AddTopic";
+
+import DeleteTopic from "../../db/operations/topics/DeleteTopic";
 
 const topicRouter = Router();
 
@@ -11,12 +13,11 @@ topicRouter.get("/get", async (req: Request, res: Response) => {
 });
 
 topicRouter.post("/add", async (req: Request, res: Response) => {
-	await AddTopic(req.body.topic);
-	res.status(200).end();
+	res.json(await AddTopic(req.body.topic)).end();
 });
 
-topicRouter.post("/delete", async (req: Request, res: Response) => {
-	await DeleteTopic(req.body.topic);
+topicRouter.delete("/delete/:topicid", async (req: Request, res: Response) => {
+	await DeleteTopic(req.params.topicid);
 	res.status(200).end();
 });
 

@@ -1,18 +1,14 @@
-import UserModel from "../../models/UserModel";
+import ItemModel from "../../models/ItemModel";
+
 export default async function AddComment(
-	owner: string,
-	collecitonName: string,
-	itemIndex: number,
+	itemId: string,
 	comment: { user: string; comment: string }
 ) {
-	await UserModel.findOneAndUpdate(
-		{
-			userName: owner,
-			"collections.name": collecitonName,
-		},
+	return await ItemModel.findByIdAndUpdate(
+		itemId,
 		{
 			$push: {
-				[`collections.$.items.${itemIndex}.comments`]: comment,
+				comments: comment,
 			},
 		},
 		{ new: true }

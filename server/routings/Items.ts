@@ -1,78 +1,44 @@
 import { Router, Request, Response } from "express";
-import AddComment from "../../db/operations/items/AddComment";
+
+import commentsRouter from "./Comments";
+import likesRouter from "./Likes";
+
+import GetAllItems from "../../db/operations/items/GetAllItems";
 
 import AddItem from "../../db/operations/items/AddItem";
-import AddLike from "../../db/operations/items/AddLike";
-import DeleteItem from "../../db/operations/items/DeleteItem";
+
 import EditItem from "../../db/operations/items/EditItem";
-import UnLike from "../../db/operations/items/Unlike";
+
+import DeleteItem from "../../db/operations/items/DeleteItem";
+import GetLastItems from "../../db/operations/items/GetLastItems";
 
 const itemsRouter = Router();
 
-itemsRouter.post(
-	"/:user/:collname/additem",
-	async (req: Request, res: Response) => {
-		await AddItem(req.params.user, req.params.collname, req.body.item);
-		res.status(200).end();
-	}
-);
+itemsRouter.use("/comments", commentsRouter);
+itemsRouter.use("/likes", likesRouter);
 
-itemsRouter.post(
-	"/:user/:collname/edititem",
+itemsRouter.get(
+	"/getall/:collectionname",
 	async (req: Request, res: Response) => {
-		console.log(req.body.index);
-		await EditItem(
-			req.params.user,
-			req.params.collname,
-			req.body.item,
-			req.body.index
-		);
-		res.status(200).end();
+		res.json(await GetAllItems(req.params.collectionname)).end();
 	}
 );
+itemsRouter.get("/lastadded", async (req: Request, res: Response) => {
+	res.json(await GetLastItems()).end();
+});
 
-itemsRouter.post(
-	"/:user/:collname/deleteitem",
-	async (req: Request, res: Response) => {
-		await DeleteItem(req.params.user, req.params.collname, req.body.item);
-		res.status(200).end();
-	}
-);
+itemsRouter.post("/newitem", async (req: Request, res: Response) => {
+	res.json(await AddItem(req.body)).end();
+});
 
-itemsRouter.post(
-	"/:user/:collname/addcomment",
-	async (req: Request, res: Response) => {
-		await AddComment(
-			req.params.user,
-			req.params.collname,
-			req.body.itemIndex,
-			req.body.comment
-		);
-		res.status(200).end();
-	}
-);
-itemsRouter.post(
-	"/:user/:collname/addlike",
-	async (req: Request, res: Response) => {
-		await AddLike(
-			req.params.user,
-			req.body.loginUser,
-			req.params.collname,
-			req.body.itemIndex
-		);
-		res.status(200).end();
-	}
-);
+itemsRouter.put("/edititem/:itemid", async (req: Request, res: Response) => {
+	res.json(await EditItem(req.params.itemid, req.body)).end();
+});
 
-itemsRouter.post(
-	"/:user/:collname/unlike",
+itemsRouter.delete(
+	"/deleteitem/:itemid",
 	async (req: Request, res: Response) => {
-		await UnLike(
-			req.params.user,
-			req.body.loginUser,
-			req.params.collname,
-			req.body.itemIndex
-		);
+		await DeleteItem(req.params.itemid);
 		res.status(200).end();
 	}
 );

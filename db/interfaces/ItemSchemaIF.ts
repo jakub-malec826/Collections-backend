@@ -4,5 +4,11 @@ export default interface ItemSchemaIF {
 	tag: string[];
 	comments: { user: string; comment: string }[];
 	likes: string[];
-	additionalField: { fieldName: string; fieldType: string }[];
+	date: string;
+	owner: string;
+	author: string;
+	additionalField: {
+		fieldName: string;
+		fieldType: string;
+	}[];
 }

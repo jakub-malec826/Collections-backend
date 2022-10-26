@@ -9,4 +9,8 @@ const CollectionSchema = new mongoose.Schema({
 	items: [String],
 });
 
+CollectionSchema.index({
+	"$**": "text",
+});
+
 export default CollectionSchema;

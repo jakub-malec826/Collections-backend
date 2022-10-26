@@ -10,4 +10,11 @@ const UserSchema = new mongoose.Schema({
 	collections: [String],
 });
 
+UserSchema.index({
+	userName: "text",
+	email: "text",
+	status: "text",
+	collections: "text",
+});
+
 export default UserSchema;

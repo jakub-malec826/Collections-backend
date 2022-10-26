@@ -11,6 +11,8 @@ import EditItem from "../../db/operations/items/EditItem";
 
 import DeleteItem from "../../db/operations/items/DeleteItem";
 import GetLastItems from "../../db/operations/items/GetLastItems";
+import GetAllTags from "../../db/operations/tags/GetAllTags";
+import GetFilteringItems from "../../db/operations/items/GetFilteringItems";
 
 const itemsRouter = Router();
 
@@ -23,8 +25,30 @@ itemsRouter.get(
 		res.json(await GetAllItems(req.params.collectionid)).end();
 	}
 );
+
+itemsRouter.get("/tagitems/:tag", async (req: Request, res: Response) => {
+	console.log(await GetFilteringItems(req.params.tag));
+	res.json(await GetFilteringItems(req.params.tag)).end();
+});
+
+itemsRouter.get(
+	"/getall/:collectionid/:filteringtext",
+	async (req: Request, res: Response) => {
+		res.json(
+			await GetFilteringItems(
+				req.params.filteringtext,
+				req.params.collectionid
+			)
+		).end();
+	}
+);
+
 itemsRouter.get("/lastadded", async (req: Request, res: Response) => {
 	res.json(await GetLastItems()).end();
+});
+
+itemsRouter.get("/alltags", async (req: Request, res: Response) => {
+	res.json(await GetAllTags()).end();
 });
 
 itemsRouter.post("/newitem", async (req: Request, res: Response) => {

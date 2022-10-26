@@ -23,5 +23,8 @@ const ItemSchema = new mongoose.Schema(
 	},
 	{ strict: false }
 );
+ItemSchema.index({
+	"$**": "text"
+});
 
 export default ItemSchema;

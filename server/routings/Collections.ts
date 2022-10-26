@@ -10,16 +10,31 @@ import DeleteCollection from "../../db/operations/collections/DeleteCollection";
 import DeleteImageFromCloudinary from "../../db/operations/collections/cloudinary/DeleteImageFromCloudinary";
 import AddItemToCollection from "../../db/operations/collections/AddItemToCollection";
 import DeleteItemFromCollection from "../../db/operations/collections/DeleteItemFromCollection";
+import GetBiggestCollections from "../../db/operations/collections/GetBiggestCollections";
+import GetFilteringCollections from "../../db/operations/collections/GetFilteringCollections";
 
 const collectionRouter = Router();
+
 
 collectionRouter.get("/getall/:userid", async (req: Request, res: Response) => {
 	res.json(await GetAllCollections(req.params.userid)).end();
 });
 
-// collectionRouter.get("/getbiggest", async (req: Request, res: Response) => {
-// 	res.json().end();
-// });
+collectionRouter.get(
+	"/getall/:userid/:filtertext",
+	async (req: Request, res: Response) => {
+		res.json(
+			await GetFilteringCollections(
+				req.params.userid,
+				req.params.filtertext
+			)
+		).end();
+	}
+);
+
+collectionRouter.get("/getbiggest", async (req: Request, res: Response) => {
+	res.json(await GetBiggestCollections()).end();
+});
 
 collectionRouter.post(
 	"/newcollection/",

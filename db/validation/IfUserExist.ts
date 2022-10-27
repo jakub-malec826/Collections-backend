@@ -5,11 +5,11 @@ import UserModel from "../models/UserModel";
 export default async function IfUserExist(userName: string, email?: string) {
     if (email) {
         const ifExist = await UserModel.findOne({ email });
-        if (ifExist) return "Email exist";
+        if (ifExist) return "emailIsExist";
     }
     const ifExist: null | UserSchemaIF = await UserModel.findOne({ userName });
     if (ifExist) {
-        return "User exist";
+        return "userIsExist";
     }
     return "OK";
 }

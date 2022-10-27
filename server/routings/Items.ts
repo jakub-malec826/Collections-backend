@@ -27,7 +27,6 @@ itemsRouter.get(
 );
 
 itemsRouter.get("/tagitems/:tag", async (req: Request, res: Response) => {
-	console.log(await GetFilteringItems(req.params.tag));
 	res.json(await GetFilteringItems(req.params.tag)).end();
 });
 

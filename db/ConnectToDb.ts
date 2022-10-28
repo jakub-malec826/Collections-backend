@@ -6,6 +6,7 @@ dotenv.config();
 const url = `mongodb+srv://jakub-malec826:${process.env.REACT_APP_MONGO_DATA}@usersdb.4tqbyhs.mongodb.net/?retryWrites=true&w=majority`;
 
 export default async function ConnectToDb() {
+	console.log(process.env.REACT_APP_MONGO_DATA);
 	try {
 		cloudinary.config({
 			cloud_name: process.env.REACT_APP_CLOUD_NAME,
@@ -13,7 +14,7 @@ export default async function ConnectToDb() {
 			api_secret: process.env.REACT_APP_API_SECRET,
 		});
 		await mongoose.connect(url);
-		console.log("Connection with db OK on url ", url);
+		console.log("Connection with db OK");
 	} catch (err) {
 		console.error(err);
 	}

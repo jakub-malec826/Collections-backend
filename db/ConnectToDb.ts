@@ -6,7 +6,6 @@ dotenv.config();
 const url = `mongodb+srv://jakub-malec826:${process.env.REACT_APP_MONGO_DATA}@usersdb.4tqbyhs.mongodb.net/?retryWrites=true&w=majority`;
 
 export default async function ConnectToDb() {
-	console.log(process.env.REACT_APP_MONGO_DATA);
 	try {
 		cloudinary.config({
 			cloud_name: process.env.REACT_APP_CLOUD_NAME,

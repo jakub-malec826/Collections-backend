@@ -1,18 +1,18 @@
 import { Router, Request, Response } from "express";
 
-import commentsRouter from "./Comments";
-import likesRouter from "./Likes";
-
 import GetAllItems from "../../db/operations/items/GetAllItems";
+import GetLastItems from "../../db/operations/items/GetLastItems";
+import GetAllTags from "../../db/operations/tags/GetAllTags";
+import GetFilteringItems from "../../db/operations/items/GetFilteringItems";
 
 import AddItem from "../../db/operations/items/AddItem";
 
 import EditItem from "../../db/operations/items/EditItem";
 
 import DeleteItem from "../../db/operations/items/DeleteItem";
-import GetLastItems from "../../db/operations/items/GetLastItems";
-import GetAllTags from "../../db/operations/tags/GetAllTags";
-import GetFilteringItems from "../../db/operations/items/GetFilteringItems";
+
+import commentsRouter from "./Comments";
+import likesRouter from "./Likes";
 
 const itemsRouter = Router();
 

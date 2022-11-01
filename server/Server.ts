@@ -1,11 +1,12 @@
 import express, { Express } from "express";
 import * as dotenv from "dotenv";
+
 import cors from "cors";
 dotenv.config();
 
+import ConnectToDb from "../db/ConnectToDb";
 import authRouter from "./routings/Auth";
 
-import ConnectToDb from "../db/ConnectToDb";
 import usersRouter from "./routings/Users";
 import topicRouter from "./routings/Topic";
 import itemsRouter from "./routings/Items";
@@ -29,9 +30,7 @@ server.use("/topic", topicRouter);
 server.use("/search", searchRouter);
 
 process.env.NODE_ENV === "development"
-	? server.listen(9090, () =>
-			console.log("App starts on port", 9090)
-	  )
+	? server.listen(9090, () => console.log("App starts on port", 9090))
 	: server.listen(process.env.PORT, () =>
 			console.log("App starts on port", process.env.PORT)
 	  );

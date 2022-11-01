@@ -2,11 +2,11 @@ import CollectionSchemaIF from "../../interfaces/CollectionSchemaIF";
 import CollectionModel from "../../models/CollectionModel";
 
 export default async function EditCollection(
-	collectionId: string,
+	collectionID: string,
 	collection: CollectionSchemaIF,
 ) {
 
-	return await CollectionModel.findByIdAndUpdate(collectionId, collection, {
+	return await CollectionModel.findByIdAndUpdate(collectionID, collection, {
 		new: true,
 	});
 }

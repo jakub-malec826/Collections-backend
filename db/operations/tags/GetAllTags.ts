@@ -1,4 +1,5 @@
 import ItemModel from "../../models/ItemModel";
+
 export default async function GetAllTags() {
 	const tags = await ItemModel.find().select("tag -_id");
 	const tagsList: string[] = [];
@@ -11,7 +12,7 @@ export default async function GetAllTags() {
 	tagsList.map((t) =>
 		tagCloudList.push({
 			value: t,
-			count: Math.floor(Math.random() * (60- 10) + 10),
+			count: Math.floor(Math.random() * (60 - 10) + 10),
 		})
 	);
 

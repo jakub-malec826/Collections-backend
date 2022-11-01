@@ -1,8 +1,8 @@
 import ItemModel from "../../models/ItemModel";
 
-export default async function UnLike(itemId: string, loginUser: string) {
+export default async function UnLike(itemID: string, loginUser: string) {
 	return await ItemModel.findByIdAndUpdate(
-		itemId,
+		itemID,
 		{
 			$pull: {
 				likes: loginUser,

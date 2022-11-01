@@ -6,10 +6,10 @@ export default async function GetFilteringItems(
 	if (owner)
 		return await ItemModel.find({
 			owner,
-			$text: { $search: filteringText },
+			$text: { $search: `\"${filteringText}\"` },
 		});
 	else
 		return await ItemModel.find({
-			$text: { $search: filteringText },
+			$text: { $search: `\"${filteringText}\"` },
 		});
 }

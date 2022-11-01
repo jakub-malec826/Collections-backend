@@ -1,11 +1,11 @@
 import ItemModel from "../../models/ItemModel";
 
 export default async function AddComment(
-	itemId: string,
+	itemID: string,
 	comment: { user: string; comment: string }
 ) {
 	return await ItemModel.findByIdAndUpdate(
-		itemId,
+		itemID,
 		{
 			$push: {
 				comments: comment,

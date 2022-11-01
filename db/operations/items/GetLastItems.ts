@@ -1,4 +1,5 @@
 import ItemModel from "../../models/ItemModel";
+
 export default async function GetLastItems() {
 	const last = await ItemModel.find();
 	return last

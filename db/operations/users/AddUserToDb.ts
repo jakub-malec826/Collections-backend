@@ -14,7 +14,7 @@ export default async function AddUserToDb(userData: userDataIF) {
 		userName,
 		email,
 		password,
-		isAdmin: true,
+		isAdmin: false,
 		status: "active",
 		collections: [],
 	});

@@ -8,9 +8,8 @@ export default async function AddCollections(collection: CollectionSchemaIF) {
 
 	await UserModel.findOneAndUpdate(
 		{ userName: collection.owner },
-		{ $push: { collections: collection._id } },
+		{ $push: { collections: newCollection._id } },
 		{ new: true }
 	);
-
 	return newCollection;
 }

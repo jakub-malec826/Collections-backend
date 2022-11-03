@@ -30,10 +30,8 @@
 		"cors": "^2.8.5",
 		"dotenv": "^16.0.3",
 		"express": "^4.18.1",
-		"http": "^0.0.1-security",
 		"mongoose": "^6.6.4",
 		"nodemon": "^2.0.20",
-		"socket.io": "^4.5.3",
 		"ts-node": "^10.9.1",
 		"typescript": "^4.8.4"
 	}
